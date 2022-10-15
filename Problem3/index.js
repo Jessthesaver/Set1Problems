@@ -1,18 +1,21 @@
-function change(element,color="black",fontsize="13",backgrouncolor="#beige"){
-    let el = document.getElementsByTagName(this);
-    el.style.color= color;
-    el.style.fontSize = fontsize;
-    el.style.backgrounColor= backgrouncolor;
+function change(e,color="blue",fontsize="1.5rem",background="#979A9A"){
+    if(this!=window){ 
+        this.style.color= color;
+        this.style.fontSize = fontsize;
+        this.style.backgroundColor= background;
+    }else{
+        let el = document.getElementById(e.id)
+        el.style.color= color;
+        el.style.fontSize = fontsize;
+        el.style.backgroundColor= background;
+    }
+
 }
 
-change('div')
-
-document.getElementById("example").addEventListener("click", change);
-    function change(element,color="#081EDE",fontsize="13",backgrouncolor="#000000"){
-    let el = document.getElementById(this.id||element);
-    el.style.color= color;
-    el.style.fontSize = fontsize;
-    el.style.backgroundColor = backgrouncolor;
+function specificchange(){
+    return change(this, 'yellow','16px','blue')
 }
 
-change('example',"#0B5345", "20", "#D0D3D4");
+let el= document.getElementById("example")
+el.onclick=specificchange;
+//i dont know if this is a problem, but the two cases work, the difference is what function needs to be called in order to use the attribute values
