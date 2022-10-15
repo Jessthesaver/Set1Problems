@@ -9,16 +9,15 @@ function vowels(str) {
 };
 
 function countervowdig(value){
-    let som=value;
     let counter;
-    let type=typeof(som);
+    let type=typeof(value);
     switch(type){
         case ('string'):
-            counter = vowels(som); 
+            counter = vowels(value); 
             return counter;
         case ('number'):
-            if(Number.isInteger(som)){ 
-            counter = Math.trunc(Math.log10(som) + 1); 
+            if(Number.isInteger(value)){ 
+            counter = Math.trunc(Math.log10(value) + 1); 
             return counter;
         }else return 'Not an integer';
 

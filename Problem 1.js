@@ -8,32 +8,32 @@ function consonants(str) {
     return (countConsonants);
 };
 
-function sortarray(array,method="ascending"){
+function sortarray(array,method="asc"){
     switch(method){
-        case "ascending":
+        case "asc":
             return array.sort();
-        case "descending":
+        case "des":
             array.sort();
             return array.reverse();
-        case "length ascending":
+        case "len asc":
             return array.sort(function(a, b){
                 return a.length - b.length;
               });
 
-        case "length descending":
+        case "len des":
             return array.sort(function(a, b){
                 return b.length - a.length;
                 });
-        case "number of consonants ascending":
+        case "cons asc":
             return array.sort(function(a, b){
                 return consonants(a) - consonants(b);
                 });
 
-        case "number of consonants descending":
+        case "cons des":
             return array.sort(function(a, b){
                 return consonants(b) - consonants(a);
                 });
     }
 }
 arr=["lprwd","Abby", "Pedros"];
-console.log(sortarray(arr,"number of consonants descending"));
+console.log(sortarray(arr,'len des'));

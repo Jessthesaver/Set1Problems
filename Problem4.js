@@ -1,17 +1,14 @@
 function copyprop(objA,objB, props){
-    let a = objA;
-    let b = objB;
-    let prop = props;
     if(prop != undefined){
-        for(let i in prop){
-            a[prop[i]]=b[prop[i]];
+        for(let i in props){
+            objA[props[i]]=objB[props[i]];
         }
-        return a;
+        return objA;
     }else{ 
-        for(let i in b){
-            a[i]=b[i];
+        for(let i in objB){
+            objA[i]=objB[i];
         }
-        return a;
+        return objA;
     }
 }
 
