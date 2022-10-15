@@ -1,44 +1,34 @@
-var tree= document.querySelectorAll(".tree");
-for (var i = 0; i < tree.length; i++) {
-    tree[i].parentElement.classList.add('plus');
-    
-    tree[i].onclick= function() {
-    this.parentElement.querySelector(".subtree").classList.toggle("active");
-    this.parentElement.classList.toggle('minus');
-    
-    };
+class TreeNode{
+  constructor(name){
+    this.name = name;
+    this.children =[];
+  }
+  addchild(element){
+    this.children.push(element);
+  }
 }
 
-//making a tree object
+const ciri = new TreeNode('Ciri');
+const chuy = new TreeNode('Chuy');
+const jesus = new TreeNode('Jesus');
+const vane = new TreeNode('Vane')
+const vero = new TreeNode('Vero')
 
-const data = [
-    { id: 56, parentId: 62 },
-    { id: 81, parentId: 80 },
-    { id: 74, parentId: null },
-    { id: 76, parentId: 80 },
-    { id: 63, parentId: 62 },
-    { id: 80, parentId: 86 },
-    { id: 87, parentId: 86 },
-    { id: 62, parentId: 74 },
-    { id: 86, parentId: 74 },
-  ];
+ciri.addchild(chuy);
+ciri.addchild(vero)
+chuy.addchild(jesus);
+chuy.addchild(vane)
 
-const idMapping = data.reduce((acc, el, i) => {
-    acc[el.id] = i;
-    return acc;
-}, {});
+var indents = 1;
+function walk(node,indent=indents) {
+		console.log('--' + Array(indent).join('--'), node.name);
+		if(node.children) {
+      if(node.children.length>0){
+        node.children.forEach(element=>walk(element, indent+1));
+        }else{
+          indent--;
+        }
+      }
+}
 
-let root;
-data.forEach((el) => {
-  // Handle the root element
-  if (el.parentId === null) {
-    root = el;
-    return;
-  }
-  // Use our mapping to locate the parent element in our data array
-  const parentEl = data[idMapping[el.parentId]];
-  // Add our current el to its parent's `children` array
-  parentEl.children = [...(parentEl.children || []), el];
-});
-
-console.log(root);
+walk(ciri)
