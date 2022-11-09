@@ -3,13 +3,11 @@ function copyprop(objA,objB, props){
         for(let i in props){
             objA[props[i]]=objB[props[i]];
         }
-        return objA;
     }else{ 
         for(let i in objB){
             objA[i]=objB[i];
-        }
-        return objA;
-    }
+        } 
+    }return objA
 }
 
 oba = {a:5, b:9, c:44};
