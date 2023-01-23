@@ -10,17 +10,14 @@ function limitFunc(fn,number){
     return function(){
         if(callcount < number){
             callcount += 1;
-            fn.apply(this,arguments);
+            return fn.apply(this,arguments);
         }else{throw new Error('You don´t have more tries')}
     }
 }
+function sun (a,b){ return a+b; } 
+let limited = limitFunc(sun, 2);
 
-let limited = limitFunc(fun, 2);
-let other = limitFunc(notfun, 3);
-limited (); 
-limited (); 
-other();
-other();
-limited ();
-other();
-other();
+console.log(limited (3,1)); 
+console.log(limited (5,2)); 
+console.log(limited (3,1)); 
+console.log(limited (5,2)); 
